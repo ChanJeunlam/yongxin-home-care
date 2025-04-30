@@ -19,6 +19,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const isMobile = useMobile()
   const pathname = usePathname()
+  const basePath = process.env.NODE_ENV === "production" ? "/yongxin-home-care" : ""
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,11 +32,11 @@ export default function Header() {
 
   const handleContactClick = () => {
     // 如果在首页，滚动到联系我们部分
-    if (pathname === "/") {
+    if (pathname === "/" || pathname === `${basePath}/`) {
       document.getElementById("contact-section")?.scrollIntoView({ behavior: "smooth" })
     } else {
       // 如果不在首页，跳转到首页的联系我们部分
-      window.location.href = "/#contact-section"
+      window.location.href = `${basePath}/#contact-section`
     }
   }
 
