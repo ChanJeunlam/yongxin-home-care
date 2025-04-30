@@ -19,10 +19,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'npm'
+          # 移除 cache 配置，因为没有锁定文件
+          # cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        # 使用 npm install 而不是 npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: npm run build
