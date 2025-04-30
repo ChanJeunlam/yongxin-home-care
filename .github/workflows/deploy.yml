@@ -19,15 +19,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          # 移除 cache 配置，因为没有锁定文件
-          # cache: 'npm'
 
       - name: Install Dependencies
-        # 使用 npm install 而不是 npm ci
-        run: npm install --legacy-peer-deps
+        run: |
+          npm install --legacy-peer-deps
+          npm install fs-extra glob --save-dev
 
       - name: Build
         run: npm run build
+
+      - name: Fix Paths for GitHub Pages
+        run: |
+          touch out/.nojekyll
+          node fix-paths.js
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

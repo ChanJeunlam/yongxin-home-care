@@ -9,6 +9,9 @@ import ParticleBackground from "@/components/particle-background"
 import TestimonialSection from "@/components/testimonial-section"
 
 export default function HomePage() {
+  // 获取仓库名称，用于图片路径
+  const basePath = process.env.NODE_ENV === "production" ? "/yongxin-home-care" : ""
+
   return (
     <div className="relative min-h-screen">
       {/* 粒子背景 */}
@@ -101,7 +104,11 @@ export default function HomePage() {
           </div>
           <div className="md:w-1/2 bg-gradient-to-br from-[#FF7F50]/10 to-[#4A90E2]/10 p-1 rounded-2xl">
             <div className="aspect-video relative overflow-hidden rounded-xl">
-              <img src="/professional-home-care-team.png" alt="公司团队" className="object-cover w-full h-full" />
+              <img
+                src={`${basePath}/professional-home-care-team.png`}
+                alt="公司团队"
+                className="object-cover w-full h-full"
+              />
             </div>
           </div>
         </div>

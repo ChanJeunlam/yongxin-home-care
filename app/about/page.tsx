@@ -2,6 +2,9 @@ import { Timeline, TimelineItem } from "@/components/timeline"
 import { Heart, Users } from "lucide-react"
 
 export default function AboutPage() {
+  // 获取仓库名称，用于图片路径
+  const basePath = process.env.NODE_ENV === "production" ? "/yongxin-home-care" : ""
+
   return (
     <div className="min-h-screen py-16 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="text-center mb-16">
@@ -37,7 +40,7 @@ export default function AboutPage() {
           <div className="lg:w-1/2">
             <div className="relative rounded-2xl overflow-hidden shadow-xl">
               <div className="absolute inset-0 bg-gradient-to-br from-[#FF7F50]/20 to-[#4A90E2]/20 z-10"></div>
-              <img src="/home-care-team.png" alt="团队合影" className="w-full h-full object-cover" />
+              <img src={`${basePath}/home-care-team.png`} alt="团队合影" className="w-full h-full object-cover" />
             </div>
             <div className="mt-6 text-center">
               <p className="text-gray-700 italic">"我们的使命是让每个家庭都能享受专业、贴心的家政服务"</p>

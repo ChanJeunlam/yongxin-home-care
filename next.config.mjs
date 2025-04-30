@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  // 设置基本路径为仓库名称
-  basePath: '/yongxin-home-care',
-  // 设置资源前缀
-  assetPrefix: '/yongxin-home-care/',
+  // 不设置 basePath 和 assetPrefix，我们将使用后处理脚本修复路径
   images: {
     unoptimized: true,
   },
